@@ -3,6 +3,7 @@ package com.ics.tukuri_delivery.AppUtils;
 import com.ics.tukuri_delivery.Model.Delivery_Responce;
 import com.ics.tukuri_delivery.Model.Login_Response;
 import com.ics.tukuri_delivery.Model.Order_Details_Responce;
+import com.ics.tukuri_delivery.Model.Order_Finish;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -40,7 +41,7 @@ public interface Api_Parameter
 
     @FormUrlEncoded
     @POST("delivered_status")
-    Call<Delivery_Responce>ORDER_FINISH(
+    Call<Order_Finish>ORDER_FINISH(
             @Field("order_id")String order_id
     );
 

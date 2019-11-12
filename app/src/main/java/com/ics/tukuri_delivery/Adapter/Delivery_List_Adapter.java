@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import com.ics.tukuri_delivery.AppUtils.BaseUrl;
 import com.ics.tukuri_delivery.Fragment.Order_details;
 import com.ics.tukuri_delivery.Model.Delivery_Responce;
 import com.ics.tukuri_delivery.Model.Delivery_data;
+import com.ics.tukuri_delivery.Model.Order_Finish;
 import com.ics.tukuri_delivery.R;
 
 import java.util.List;
@@ -44,7 +46,7 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
     }
 
     @Override
-    public void onBindViewHolder(Delivery_List_Adapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(Delivery_List_Adapter.ViewHolder viewHolder,final int i) {
 
         if (viewHolder != null) {
 
@@ -68,7 +70,7 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
             viewHolder.finishb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                        alert_box(i);
                 }
             });
 
@@ -98,7 +100,7 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
         }
     }
 
-    private void alert_box(final String value)
+    private void alert_box(final int value)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(mactivity);
         builder.setTitle("Confirm");
@@ -121,18 +123,24 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
         dlg.show();
         dlg.getButton(AlertDialog.BUTTON_NEGATIVE).setPadding(0,0,10,0);
         dlg.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(mactivity.getResources().getColor(R.color.grey));
+        dlg.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(mactivity.getResources().getColor(R.color.colorPrimary));
     }
 
 
-    private void CALL_API(String order_id){
-        BaseUrl.getAPIService().ORDER_FINISH(order_id).enqueue(new Callback<Delivery_Responce>() {
+    private void CALL_API(final int val){
+        BaseUrl.getAPIService().ORDER_FINISH(dataList.get(val).getOrderId()).enqueue(new Callback<Order_Finish>() {
             @Override
-            public void onResponse(Call<Delivery_Responce> call, Response<Delivery_Responce> response) {
-
+            public void onResponse(Call<Order_Finish> call, Response<Order_Finish> response) {
+                if (response.body().getResponce()) {
+                    dataList.remove(dataList.get(val));
+                    notifyDataSetChanged();
+                    Toast.makeText(mactivity, "Order finished / Delivered...", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mactivity, "Order not finished...", Toast.LENGTH_SHORT).show();
+                }
             }
-
             @Override
-            public void onFailure(Call<Delivery_Responce> call, Throwable t) {
+            public void onFailure(Call<Order_Finish> call, Throwable t) {
 
             }
         });
