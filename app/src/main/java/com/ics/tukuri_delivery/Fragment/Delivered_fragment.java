@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ics.tukuri_delivery.Adapter.Delivered_List_Adapter;
 import com.ics.tukuri_delivery.Adapter.Delivery_List_Adapter;
 import com.ics.tukuri_delivery.AppUtils.Api_Parameter;
 import com.ics.tukuri_delivery.AppUtils.AppPrefrences;
@@ -30,7 +31,7 @@ import retrofit2.Response;
 
 public class Delivered_fragment extends Fragment
 {
-    Delivery_List_Adapter adapter;
+    Delivered_List_Adapter adapter;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
     Api_Parameter ApiService;
@@ -67,7 +68,7 @@ public class Delivered_fragment extends Fragment
                 Log.e("DELIVERED_CALL .", "-------------------------------------------------");
                 if (response.body().getResponce()){
                     imgNothing.setVisibility(View.GONE);
-                    adapter = new Delivery_List_Adapter(getActivity(),response.body().getData());
+                    adapter = new Delivered_List_Adapter(getActivity(),response.body().getData());
                     linearLayoutManager = new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());

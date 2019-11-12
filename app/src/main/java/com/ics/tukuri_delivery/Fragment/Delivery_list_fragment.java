@@ -1,6 +1,7 @@
 package com.ics.tukuri_delivery.Fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,7 +42,7 @@ public class Delivery_list_fragment extends Fragment
     Delivery_List_Adapter adapter;
     LinearLayoutManager linearLayoutManager;
     ImageView imgnot;
-    TextView details;
+    Fragment fragment;
 
     @Nullable
     @Override
@@ -51,7 +52,6 @@ public class Delivery_list_fragment extends Fragment
 
         recyclerView = (RecyclerView) view.findViewById(R.id.drecycler);
         imgnot = (ImageView) view.findViewById(R.id.img_nothing1);
-        details = (TextView) view.findViewById(R.id.details_buttn);
 
         ApiService = BaseUrl.getAPIService();
 
@@ -65,18 +65,7 @@ public class Delivery_list_fragment extends Fragment
             pDialog.show();
         }
 
-        details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragment= new SubCategory_fragment();
-                fragment.setArguments(args);
-                FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentmanager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_layout,fragment);
-                fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
-                fragmentTransaction.commit();
-            }
-        });
+
 
         return view;
     }

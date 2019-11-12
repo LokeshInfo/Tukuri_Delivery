@@ -68,15 +68,42 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="8pt"
+            android:singleLine="false"
             android:layout_marginTop="5dp"
             />
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_info"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        />
 
         <TextView
             android:id="@+id/details_buttn"
             android:layout_width="100dp"
             android:layout_height="34dp"
             android:text="Details"
+            android:textColor="@color/colorPrimary"
+            android:textSize="8pt"
+            android:textAlignment="center"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_gravity="end"
+            style="@style/bold_tx"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/finish_buttn"
+            android:layout_width="100dp"
+            android:layout_height="34dp"
+            android:text="Finish"
             android:textColor="@color/white"
             android:textSize="8pt"
             android:textAlignment="center"
@@ -84,8 +111,11 @@
             android:gravity="center_vertical|center_horizontal"
             android:layout_gravity="end"
             style="@style/bold_tx"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             />
-
+</RelativeLayout>
     </LinearLayout>
 
 

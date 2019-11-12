@@ -1,6 +1,7 @@
 package com.ics.tukuri_delivery.View;
 
 import android.animation.ValueAnimator;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -173,9 +174,17 @@ public class Login_activity extends AppCompatActivity
 
 
     private void Call_LOGIN(){
+
+        final ProgressDialog dialog;
+        dialog = new ProgressDialog(Login_activity.this);
+        dialog.setMessage("Processing");
+        dialog.setCancelable(true);
+        dialog.show();
+
         ApiService.LOGIN_CALL(user_id, password).enqueue(new Callback<Login_Response>() {
             @Override
             public void onResponse(Call<Login_Response> call, Response<Login_Response> response) {
+                dialog.dismiss();
                 Log.e("LOGIN_CALL RESPONSE.", "" + new Gson().toJson(response.body()));
                 Log.e("LOGIN_CALL RESPONSE.", "-------------------------------------------------");
 
@@ -210,6 +219,7 @@ public class Login_activity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<Login_Response> call, Throwable t) {
+                dialog.dismiss();
                 Log.e("LOGIN_CALL Error ..." ,""+t.getStackTrace().toString());
                 Log.e("LOGIN_CALL Error ..." ,""+t.getMessage());
                 Log.e("LOGIN_CALL Error ..." ,""+t.getCause());
