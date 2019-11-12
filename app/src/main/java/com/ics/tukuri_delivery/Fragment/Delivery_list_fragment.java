@@ -1,17 +1,21 @@
 package com.ics.tukuri_delivery.Fragment;
 
 import android.app.ProgressDialog;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,13 +36,12 @@ import retrofit2.Response;
 
 public class Delivery_list_fragment extends Fragment
 {
-
-
     RecyclerView recyclerView;
     Api_Parameter ApiService;
     Delivery_List_Adapter adapter;
     LinearLayoutManager linearLayoutManager;
     ImageView imgnot;
+    TextView details;
 
     @Nullable
     @Override
@@ -48,6 +51,7 @@ public class Delivery_list_fragment extends Fragment
 
         recyclerView = (RecyclerView) view.findViewById(R.id.drecycler);
         imgnot = (ImageView) view.findViewById(R.id.img_nothing1);
+        details = (TextView) view.findViewById(R.id.details_buttn);
 
         ApiService = BaseUrl.getAPIService();
 
@@ -60,6 +64,19 @@ public class Delivery_list_fragment extends Fragment
             pDialog.setContentText("No Internet Connection !");
             pDialog.show();
         }
+
+        details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment= new SubCategory_fragment();
+                fragment.setArguments(args);
+                FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentmanager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_layout,fragment);
+                fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+                fragmentTransaction.commit();
+            }
+        });
 
         return view;
     }
@@ -107,4 +124,5 @@ public class Delivery_list_fragment extends Fragment
         });
 
     }
+
 }

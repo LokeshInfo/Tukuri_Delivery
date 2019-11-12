@@ -92,4 +92,5 @@ public class Delivered_fragment extends Fragment
             }
         });
     }
+
 }

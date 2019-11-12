@@ -3,6 +3,7 @@ package com.ics.tukuri_delivery.AppUtils;
 public class BaseUrl
 {
     public static final String BASEURL = "https://ihisaab.in/MyTukari/index.php/Api/";
+    public static final String IMG_BASEURL = "https://ihisaab.in/MyTukari/";
 //    public static final String BASEURL = "http://jntrcpl.com/MyTukari/index.php/Api/";
 
     public static Api_Parameter getAPIService(){
