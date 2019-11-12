@@ -2,8 +2,8 @@ package com.ics.tukuri_delivery.AppUtils;
 
 public class BaseUrl
 {
-    //public static final String BASEURL = "https://ihisaab.in/MyTukari/index.php/Api/";
-    public static final String BASEURL = "http://jntrcpl.com/MyTukari/index.php/Api/";
+    public static final String BASEURL = "https://ihisaab.in/MyTukari/index.php/Api/";
+//    public static final String BASEURL = "http://jntrcpl.com/MyTukari/index.php/Api/";
 
     public static Api_Parameter getAPIService(){
         return Retro_Client.getClient(BASEURL).create(Api_Parameter.class);

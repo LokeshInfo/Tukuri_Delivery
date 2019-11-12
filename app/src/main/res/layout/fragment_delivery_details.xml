@@ -7,16 +7,24 @@
     >
 
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/drecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/img_nothing1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/nothing_found"
         android:layout_centerVertical="true"
-        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
-        android:text="DELIVERY DETAILS"
-        style="@style/bold_tx"
-        android:textSize="12pt"
-        android:textAlignment="center"
-        android:textColor="@color/blue"/>
+        android:alpha="0.5"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+
 
 </RelativeLayout>

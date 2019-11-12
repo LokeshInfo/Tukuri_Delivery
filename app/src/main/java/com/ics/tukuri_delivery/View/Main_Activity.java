@@ -1,11 +1,12 @@
 package com.ics.tukuri_delivery.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.ics.tukuri_delivery.AppUtils.Session_Manage;
 import com.ics.tukuri_delivery.Fragment.Delivered_fragment;
 import com.ics.tukuri_delivery.Fragment.Delivery_list_fragment;
 import com.ics.tukuri_delivery.Fragment.Profile_fragment;
@@ -31,6 +33,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class Main_Activity extends AppCompatActivity {
 
     TextView txtoolbar;
+    Session_Manage session_manage;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,10 +47,11 @@ public class Main_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         txtoolbar.setText("Tukuri  Delivery");
+        session_manage = new Session_Manage(Main_Activity.this);
 
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         if (viewPager != null) {
             setUpViewPager(viewPager);
         }
@@ -72,7 +77,7 @@ public class Main_Activity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
 
@@ -81,10 +86,19 @@ public class Main_Activity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;        }
+
+        if (id == R.id.menu_refresh) {
+            viewPager.getAdapter().notifyDataSetChanged();
+            Toast.makeText(Main_Activity.this, "Refreshing...", Toast.LENGTH_SHORT).show();
+            return true;        }
+        else if (id == R.id.menu_logout){
+            session_manage.logoutSession();
+            Intent inlogut = new Intent(Main_Activity.this, Login_activity.class);
+            startActivity(inlogut);
+            finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
