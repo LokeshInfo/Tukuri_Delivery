@@ -7,10 +7,9 @@ import java.util.List;
 
 public class Order_Details_Responce
 {
-
     @SerializedName("data")
     @Expose
-    private List<Order_Details_Data> data = null;
+    private List<Order_Details_Data> data;
 
     public List<Order_Details_Data> getData() {
         return data;

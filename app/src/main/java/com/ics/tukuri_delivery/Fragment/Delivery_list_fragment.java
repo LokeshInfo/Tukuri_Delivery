@@ -50,7 +50,7 @@ public class Delivery_list_fragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_delivery_details,container,false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.drecycler);
+        recyclerView = (RecyclerView)view.findViewById(R.id.delivery_recycler);
         imgnot = (ImageView) view.findViewById(R.id.img_nothing1);
 
         ApiService = BaseUrl.getAPIService();

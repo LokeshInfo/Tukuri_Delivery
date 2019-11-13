@@ -30,7 +30,7 @@ public class Order_Details_Adapter extends RecyclerView.Adapter<Order_Details_Ad
     @Override
     public Order_Details_Adapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_order_details,viewGroup,false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_details,viewGroup,false);
         return new Order_Details_Adapter.ViewHolder(v);
     }
 
@@ -41,9 +41,11 @@ public class Order_Details_Adapter extends RecyclerView.Adapter<Order_Details_Ad
 
             Order_Details_Data dob = dataList.get(i);
 
-            viewHolder.datax.setText(" "+dob.getProduct_name()+"\n   "+dob.getQty_in_kg()
+         /*   viewHolder.datax.setText(" "+dob.getProduct_name()+"\n   "+dob.getQty_in_kg()
                     +"\n   "+dob.getPrice()+"\n   "+dob.getUnit()+"\n   "+dob.getUnit_value()
-                    +"\n   "+dob.getSale_id()+"\n   "+dob.getSale_item_id());
+                    +"\n   "+dob.getSale_id()+"\n   "+dob.getSale_item_id());*/
+         viewHolder.name.setText(""+dob.getProduct_name());
+         viewHolder.qty.setText(""+dob.getQty_in_kg()+" kg"+"  INR "+dob.getPrice());
 
         }
     }
@@ -55,12 +57,13 @@ public class Order_Details_Adapter extends RecyclerView.Adapter<Order_Details_Ad
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView datax;
+        TextView name, qty;
 
         public ViewHolder(View itemview) {
             super(itemview);
 
-            datax = itemview.findViewById(R.id.txxx);
+            name = itemview.findViewById(R.id.p_name);
+            qty = itemview.findViewById(R.id.p_qty);
 
         }
     }

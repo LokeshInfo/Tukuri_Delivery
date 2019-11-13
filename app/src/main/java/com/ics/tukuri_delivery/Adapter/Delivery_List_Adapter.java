@@ -41,7 +41,7 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
     @Override
     public Delivery_List_Adapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_delivery_list,viewGroup,false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_delivery,viewGroup,false);
         return new Delivery_List_Adapter.ViewHolder(v);
     }
 
@@ -50,18 +50,22 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
 
         if (viewHolder != null) {
 
-            Delivery_data dob = dataList.get(i);
+            final Delivery_data dob = dataList.get(i);
 
+            //viewHolder.name.setText(dob.getUserFullname());
+            viewHolder.oid.setText(""+dob.getOrderId());
             viewHolder.name.setText(""+dob.getUserFullname());
             viewHolder.mobile.setText(""+dob.getUserPhone());
-            viewHolder.paymode.setText(""+dob.getPaymentMode());
-            viewHolder.amount.setText("Rs. "+dob.getTotalAmount());
+            viewHolder.paymode.setText(""+dob.getPaymentMode()+" --- "+dob.getTotalAmount());
+            viewHolder.date.setText(""+dob.getOrderDate());
+            //viewHolder.amount.setText("Rs. "+dob.getTotalAmount());
             viewHolder.address.setText(""+dob.getDeliveryAddress());
             viewHolder.details.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     Intent in = new Intent(mactivity, Order_details.class);
+                    in.putExtra("o_id",dob.getOrderId());
                     mactivity.startActivity(in);
 
                 }
@@ -84,16 +88,17 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView name, mobile, address, paymode, amount, details, finishb;
+        TextView oid,name, mobile, address, paymode, amount, details, finishb, date;
 
         public ViewHolder(View itemview) {
             super(itemview);
 
-            name = itemview.findViewById(R.id.tx_name);
-            mobile = itemview.findViewById(R.id.tx_phone);
-            address = itemview.findViewById(R.id.tx_address);
-            paymode = itemview.findViewById(R.id.tx_paymode);
-            amount = itemview.findViewById(R.id.tx_amount);
+            oid = itemview.findViewById(R.id.p_oidd);
+            name = itemview.findViewById(R.id.p_nmm);
+            mobile = itemview.findViewById(R.id.p_phone);
+            address = itemview.findViewById(R.id.p_addr);
+            paymode = itemview.findViewById(R.id.p_paymnt);
+            date = itemview.findViewById(R.id.p_dte);
             details = itemview.findViewById(R.id.details_buttn);
             finishb = itemview.findViewById(R.id.finish_buttn);
 

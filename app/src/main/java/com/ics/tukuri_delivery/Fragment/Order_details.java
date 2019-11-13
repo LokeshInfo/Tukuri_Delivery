@@ -26,7 +26,6 @@ import retrofit2.Response;
 
 public class Order_details extends AppCompatActivity
 {
-
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     ImageView imgnot, imgback;

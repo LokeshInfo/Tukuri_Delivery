@@ -5,7 +5,72 @@ import com.google.gson.annotations.SerializedName;
 
 public class Order_Details_Data {
 
-    @SerializedName("sale_item_id")
+    @SerializedName("product_name")
+    @Expose
+    private String product_name;
+
+    @SerializedName("price")
+    @Expose
+    private String price;
+
+    @SerializedName("qty_in_kg")
+    @Expose
+    private String qty_in_kg;
+
+    @SerializedName("unit_value")
+    @Expose
+    private String unit_value;
+
+    @SerializedName("unit")
+    @Expose
+    private String unit;
+
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getQty_in_kg() {
+        return qty_in_kg;
+    }
+
+    public void setQty_in_kg(String qty_in_kg) {
+        this.qty_in_kg = qty_in_kg;
+    }
+
+    public String getUnit_value() {
+        return unit_value;
+    }
+
+    public void setUnit_value(String unit_value) {
+        this.unit_value = unit_value;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+}
+
+
+
+/*
+@SerializedName("sale_item_id")
     @Expose
     private String sale_item_id;
 
@@ -112,4 +177,6 @@ public class Order_Details_Data {
     public void setQty_in_kg(String qty_in_kg) {
         this.qty_in_kg = qty_in_kg;
     }
-}
+
+
+ */
