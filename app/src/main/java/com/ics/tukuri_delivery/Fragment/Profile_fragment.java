@@ -20,8 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile_fragment extends Fragment
 {
-
-    TextView name , mobile , address, mail;
+    TextView name , mobile , mail;
     CircleImageView imgprofile;
 
     @Nullable
@@ -32,13 +31,11 @@ public class Profile_fragment extends Fragment
 
         name = view.findViewById(R.id.tx_pname);
         mobile = view.findViewById(R.id.tx_pmobile);
-        address = view.findViewById(R.id.tx_paddress);
         mail = view.findViewById(R.id.tx_pmail);
         imgprofile = view.findViewById(R.id.img_profile);
 
         name.setText(""+ AppPrefrences.getName(getActivity()));
         mobile.setText(""+AppPrefrences.getMobile(getActivity()));
-        address.setText(""+AppPrefrences.getAddress(getActivity()));
         mail.setText(""+AppPrefrences.getMail(getActivity()));
 
         Glide.with(getActivity())

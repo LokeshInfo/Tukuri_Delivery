@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="15dp"
         android:gravity="center_vertical"
         >
 
@@ -77,22 +77,6 @@
             android:padding="10dp"
             android:gravity="center_vertical"
             android:textAlignment="center"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.55dp"
-            android:background="@color/black"/>
-
-        <TextView
-            android:id="@+id/tx_paddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="9pt"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:textAlignment="center"/>
-
 
     </LinearLayout>
     </androidx.cardview.widget.CardView>
