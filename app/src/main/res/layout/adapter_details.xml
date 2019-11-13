@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="Name  - "
                 android:textColor="@color/grey"
-                android:textSize="9pt"
+                android:textSize="8pt"
                 style="@style/tx_vu"
                 android:singleLine="false"
                 />
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="Quantity  - "
                 android:textColor="@color/grey"
-                android:textSize="9pt"
+                android:textSize="8pt"
                 android:layout_marginTop="8dp"
                 style="@style/tx_vu"
                 android:singleLine="false"

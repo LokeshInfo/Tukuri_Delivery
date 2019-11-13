@@ -43,11 +43,12 @@ public class Delivered_List_Adapter  extends RecyclerView.Adapter<Delivered_List
         if (viewHolder != null) {
 
             final Delivery_data dob = dataList.get(i);
-
+            viewHolder.oid.setText(""+dob.getOrderId());
             viewHolder.name.setText(""+dob.getUserFullname());
             viewHolder.mobile.setText(""+dob.getUserPhone());
-            viewHolder.paymode.setText(""+dob.getPaymentMode());
-            viewHolder.amount.setText("Rs. "+dob.getTotalAmount());
+            viewHolder.paymode.setText("(C.O.D / Included Delivery Charges)"+"\n  Rs."+dob.getTotalAmount());
+            viewHolder.date.setText(""+dob.getOrderDate());
+            //viewHolder.amount.setText("Rs. "+dob.getTotalAmount());
             viewHolder.address.setText(""+dob.getDeliveryAddress());
             viewHolder.details.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -68,17 +69,19 @@ public class Delivered_List_Adapter  extends RecyclerView.Adapter<Delivered_List
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView name, mobile, address, paymode, amount;
+        TextView oid,name, mobile, address, paymode, date;
         RelativeLayout details;
 
         public ViewHolder(View itemview) {
             super(itemview);
 
-            name = itemview.findViewById(R.id.tx_name);
-            mobile = itemview.findViewById(R.id.tx_phone);
-            address = itemview.findViewById(R.id.tx_address);
-            paymode = itemview.findViewById(R.id.tx_paymode);
-            amount = itemview.findViewById(R.id.tx_amount);
+            oid = itemview.findViewById(R.id.p_oidd);
+            name = itemview.findViewById(R.id.p_nmm);
+            mobile = itemview.findViewById(R.id.p_phone);
+            address = itemview.findViewById(R.id.p_addr);
+            paymode = itemview.findViewById(R.id.p_paymnt);
+            date = itemview.findViewById(R.id.p_dte);
+
             details = itemview.findViewById(R.id.details_buttn2);
         }
     }

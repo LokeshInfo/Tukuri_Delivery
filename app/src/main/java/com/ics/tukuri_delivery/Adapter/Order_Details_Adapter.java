@@ -45,7 +45,7 @@ public class Order_Details_Adapter extends RecyclerView.Adapter<Order_Details_Ad
                     +"\n   "+dob.getPrice()+"\n   "+dob.getUnit()+"\n   "+dob.getUnit_value()
                     +"\n   "+dob.getSale_id()+"\n   "+dob.getSale_item_id());*/
          viewHolder.name.setText(""+dob.getProduct_name());
-         viewHolder.qty.setText(""+dob.getQty_in_kg()+" kg"+"  INR "+dob.getPrice());
+         viewHolder.qty.setText(""+dob.getQty_in_kg()+" kg"+"  Rs. "+dob.getPrice());
 
         }
     }

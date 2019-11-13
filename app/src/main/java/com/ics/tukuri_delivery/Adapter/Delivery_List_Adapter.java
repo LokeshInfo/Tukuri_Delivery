@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ics.tukuri_delivery.AppUtils.BaseUrl;
 import com.ics.tukuri_delivery.Fragment.Order_details;
-import com.ics.tukuri_delivery.Model.Delivery_Responce;
 import com.ics.tukuri_delivery.Model.Delivery_data;
 import com.ics.tukuri_delivery.Model.Order_Finish;
 import com.ics.tukuri_delivery.R;
@@ -56,7 +55,8 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
             viewHolder.oid.setText(""+dob.getOrderId());
             viewHolder.name.setText(""+dob.getUserFullname());
             viewHolder.mobile.setText(""+dob.getUserPhone());
-            viewHolder.paymode.setText(""+dob.getPaymentMode()+" --- "+dob.getTotalAmount());
+            //viewHolder.paymode.setText(""+dob.getPaymentMode()+" -- Rs."+dob.getTotalAmount());
+            viewHolder.paymode.setText("(C.O.D / Included Delivery Charges)"+"\n  Rs."+dob.getTotalAmount());
             viewHolder.date.setText(""+dob.getOrderDate());
             //viewHolder.amount.setText("Rs. "+dob.getTotalAmount());
             viewHolder.address.setText(""+dob.getDeliveryAddress());
