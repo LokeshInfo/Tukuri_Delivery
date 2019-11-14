@@ -33,6 +33,14 @@ public class Delivery_data {
     @Expose
     private Object userPhone;
 
+    @SerializedName("longitude")
+    @Expose
+    private String longitude;
+
+    @SerializedName("latitude")
+    @Expose
+    private String latitude;
+
     public String getOrderId() {
         return orderId;
     }
@@ -105,5 +113,19 @@ public class Delivery_data {
         this.userPhone = userPhone;
     }
 
+    public String getLongitude() {
+        return longitude;
+    }
 
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 }

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.ics.tukuri_delivery.Model.Order_Finish;
 import com.ics.tukuri_delivery.R;
 
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -83,9 +85,15 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
             viewHolder.icmap.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                            Uri.parse("google.navigation:q="+dob.getDeliveryAddress()));
-                    mactivity.startActivity(intent);
+
+                    String latitude = dob.getLatitude();
+                    String longitude = dob.getLongitude();
+                    Uri.Builder builder = new Uri.Builder();
+
+                    Uri gmmIntentUri = Uri.parse("google.navigation:q="+latitude+","+longitude + "&mode=d");
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    mactivity.startActivity(mapIntent);
                 }
             });
 
