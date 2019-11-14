@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,8 +58,8 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
             viewHolder.name.setText(""+dob.getUserFullname());
             viewHolder.mobile.setText(""+dob.getUserPhone());
             //viewHolder.paymode.setText(""+dob.getPaymentMode()+" -- Rs."+dob.getTotalAmount());
-            viewHolder.paymode.setText("(C.O.D / Included Delivery Charges)"+"\n  Rs."+dob.getTotalAmount());
-            viewHolder.date.setText(""+dob.getOrderDate());
+            viewHolder.paymode.setText("Rs."+dob.getTotalAmount());
+            viewHolder.date.setText(""+dob.getOrderDate()+"\n"+dob.getDeliveryTimeFrom()+" -- "+dob.getDeliveryTimeTo());
             //viewHolder.amount.setText("Rs. "+dob.getTotalAmount());
             viewHolder.address.setText(""+dob.getDeliveryAddress());
             viewHolder.details.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +80,15 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
                 }
             });
 
+            viewHolder.icmap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse("google.navigation:q="+dob.getDeliveryAddress()));
+                    mactivity.startActivity(intent);
+                }
+            });
+
         }
     }
 
@@ -89,6 +100,7 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView oid,name, mobile, address, paymode, amount, details, finishb, date;
+        ImageView icmap;
 
         public ViewHolder(View itemview) {
             super(itemview);
@@ -101,7 +113,7 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
             date = itemview.findViewById(R.id.p_dte);
             details = itemview.findViewById(R.id.details_buttn);
             finishb = itemview.findViewById(R.id.finish_buttn);
-
+            icmap = itemview.findViewById(R.id.icon_map);
         }
     }
 

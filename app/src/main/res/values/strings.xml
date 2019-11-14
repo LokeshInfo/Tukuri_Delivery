@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tukuri_Delivery</string>
+
+    <string name="charges">( C.O.D / Included Delivery Charges )</string>
 </resources>

@@ -227,17 +227,33 @@
                     style="@style/tx_vu"
                     android:singleLine="false"
                     />
-                <TextView
-                    android:id="@+id/p_paymnt"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:textSize="8pt"
-                    style="@style/tx_vu"
                     android:layout_marginTop="8dp"
-                    android:singleLine="false"
-                    />
+                    >
+                    <TextView
+                        android:id="@+id/p_paymnt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textSize="8pt"
+                        style="@style/tx_vu"
+                        android:singleLine="false"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/charges"
+                        android:textSize="6pt"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

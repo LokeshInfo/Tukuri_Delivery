@@ -46,7 +46,7 @@ public class Delivered_List_Adapter  extends RecyclerView.Adapter<Delivered_List
             viewHolder.oid.setText(""+dob.getOrderId());
             viewHolder.name.setText(""+dob.getUserFullname());
             viewHolder.mobile.setText(""+dob.getUserPhone());
-            viewHolder.paymode.setText("(C.O.D / Included Delivery Charges)"+"\n  Rs."+dob.getTotalAmount());
+            viewHolder.paymode.setText("Rs."+dob.getTotalAmount());
             viewHolder.date.setText(""+dob.getOrderDate());
             //viewHolder.amount.setText("Rs. "+dob.getTotalAmount());
             viewHolder.address.setText(""+dob.getDeliveryAddress());

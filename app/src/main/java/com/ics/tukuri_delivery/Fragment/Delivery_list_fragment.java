@@ -89,6 +89,8 @@ public class Delivery_list_fragment extends Fragment
                     imgnot.setVisibility(View.GONE);
                     adapter = new Delivery_List_Adapter(getActivity(),response.body().getData());
                     linearLayoutManager = new LinearLayoutManager(getActivity());
+                    linearLayoutManager.setReverseLayout(true);
+                    linearLayoutManager.setStackFromEnd(true);
                     recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                     recyclerView.setAdapter(adapter);

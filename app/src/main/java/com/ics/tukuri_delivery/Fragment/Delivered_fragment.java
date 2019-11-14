@@ -70,6 +70,8 @@ public class Delivered_fragment extends Fragment
                     imgNothing.setVisibility(View.GONE);
                     adapter = new Delivered_List_Adapter(getActivity(),response.body().getData());
                     linearLayoutManager = new LinearLayoutManager(getActivity());
+                    linearLayoutManager.setReverseLayout(true);
+                    linearLayoutManager.setStackFromEnd(true);
                     recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                     recyclerView.setAdapter(adapter);
