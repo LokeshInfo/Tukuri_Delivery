@@ -33,7 +33,6 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
     List<Delivery_data> dataList;
     Activity mactivity;
 
-
     public Delivery_List_Adapter(Activity mactivity, List<Delivery_data> dataList)
     {
         this.mactivity=mactivity;
@@ -96,7 +95,6 @@ public class Delivery_List_Adapter  extends RecyclerView.Adapter<Delivery_List_A
                     mactivity.startActivity(mapIntent);
                 }
             });
-
         }
     }
 
